@@ -1,0 +1,388 @@
+From c9222911f8bc36ba04f7bb9f75c36979f51f1738 Mon Sep 17 00:00:00 2001
+From: "Mr.Oh" <ohgolas@gmail.com>
+Date: Mon, 19 Mar 2018 18:00:36 +0900
+Subject: [PATCH] no message
+
+---
+ ë°ì´í„°ë² ì´ìŠ¤ ëª…ë ¹ë¬¸ ì •ë¦¬.txt | 368 ++++++++++++++++++++++++++++++++
+ 1 file changed, 368 insertions(+)
+ create mode 100644 ë°ì´í„°ë² ì´ìŠ¤ ëª…ë ¹ë¬¸ ì •ë¦¬.txt
+
+diff --git a/ë°ì´í„°ë² ì´ìŠ¤ ëª…ë ¹ë¬¸ ì •ë¦¬.txt b/ë°ì´í„°ë² ì´ìŠ¤ ëª…ë ¹ë¬¸ ì •ë¦¬.txt
+new file mode 100644
+index 0000000..7afd6e7
+--- /dev/null
++++ b/ë°ì´í„°ë² ì´ìŠ¤ ëª…ë ¹ë¬¸ ì •ë¦¬.txt	
+@@ -0,0 +1,368 @@
++µ¥ÀÌÅÍ º£ÀÌ½º Á¢¼ÓÀ» À§ÇÑ »ç¿ëÀÚ:System,sys:°ü¸®ÀÚ(DBA)
++                      :hr-ÀÎ»ç°ü¸® À¯Àú(¿¬½À),°èÁ¤ Àá±è »óÅÂÀÓ
++                      
++                      
++br »ç¿ëÀÚÀÇ °èÁ¤À» ÇØÁ¦ÇÏ´Â ÀÛ¾÷ÀÌ ÇÊ¿äÇÔ
++¼ø¼­
++
++1.Á¢¼ÓÇÏ±â SQL Command List Ã¢À» ¿­°í
++conn /as sysdba; or conn system/admin
++
++2.°èÁ¤ ÇØÁ¦ÇÏ°í ÆĞ½º¿öµå ¼³Á¤ÇÏ±â
++alter user hr         identified by hr       account unlock;
++hr »ç¿ëÀÚÀÇ ÆĞ½º¿öµå¸¦ hr·Î ¼³Á¤ °èÁ¤ ÇØÁ¦ÇÏ¶ó..
++
++3.°èÁ¤ ÇØÁ¦ È®ÀÎ ¹× Á¢¼Ó
++conn hr/hr
++Á¢¼Ó À¯Àú¸í/ÆĞ½º¿öµå
++
++SQL:µ¥ÀÌÅÍº£ÀÌ½º°¡ ¾Ë¾Æµè´Â ¾ğ¾î Structure Query Language
++DDL:CREATE,DROP,TRUNCATE,RENAME
++DML:INSERT,DELETE,UPDATE
++TCL:COMMIT,ROLLBACK,SAVEPOINT
++DQL:SELECT
++
++µ¥ÀÌÅÍ¸¦ ÀúÀåÇÏ±â À§ÇÑ °´Ã¼:TABLE(Å×ÀÌºí)-ÀÚ¹ÙÀÇ voÅ¬·¡½º¿Í À¯»ç
++
++Å¬·¡½º¸í->Å×ÀÌºí¸í
++¸â¹öº¯¼ö(Å¸ÀÔ ÀÌ¸§) ÄÃ·³(Å¸ÀÔ ÀÌ¸§)
++
++¿À¶óÅ¬ÀÇ µ¥ÀÌÅÍ Å¸ÀÔ
++¹®ÀÚ - char(°íÁ¤±æÀÌ),varchar2(°¡º¯±æÀÌ)
++¼ıÀÚ - number
++³¯Â¥ - date
++
++hr-À¯Àú °èÁ¤¿¡´Â ÀÌ¹Ì ¿©·¯°¡Áö ÀÖÀ½
++
++Á¦°øµÇ´Â Å×ÀÌºí È®ÀÎÇÏÀÚ
++
++-ÇöÀç Á¢¼ÓÇÑ »ç¿ëÀÚÀÇ Å×ÀÌºí ¸ñ·ÏÀ» È®ÀÎÇÏ±â
++select *from tab;
++
++---SELECT Àı ÀÌÇØÇÏ±â
++SELECT       ->È­¸é¿¡ º¸¿©ÁÙ ¶§ÀÇ ÀÛ¾÷
++FROM         ->ÁıÇÕÃ¼ Á¤º¸¸¦ Á¦°ø,Å×ÀÌºí¸íÀ» ³ª¿­
++WHERE        ->¹üÀ§ ÁÙÀÌ±â(ÀÏ¹İ µ¥ÀÌÅÍ¿¡ ´ëÇÑ)
++GROUP BY     ->ÀüÃ¼ µ¥ÀÌÅÍ¸¦ Æ¯Á¤ÇÑ ¼Ò±×·ìÀ¸·Î ¹­¾îÁØ´Ù.
++HAVING       ->±×·ì¿¡ ´ëÇÑ Á¦¾àÀ» ÁØ´Ù.
++ORDER BY     ->Á¤·Ä,¿øÇÏ´Â ¼ø¼­·Î Ãâ·ÂÇÏ±â
++
++select ÀıÀ» »ç¿ëÇÒ ¶§ ÃÖ¼ÒÇÑ from°ú ÇÔ²² »ç¿ëÇØ¾ßÇÑ´Ù.
++SQL¹®À» ÀÛ¼ºÇÒ ¶§ ÇÑÁÙ·Î ÀÌ¾î¼­ ÀÛ¼ºÇÒ ¼ö ÀÖÁö¸¸ º¸±âÁÁ°ÔÇÏ±âÀ§ÇØ 
++--Àıº°·Î ³ª´©¾î¼­ ÀÔ·ÂÇÑ´Ù.
++SQL¹®ÀåÀº ´ë¼Ò¹®ÀÚ¸¦ ±¸ºĞÇÏÁö ¾Ê´Â´Ù.
++µ¥ÀÌÅÍ °ªÀº ´ë¼Ò¹®ÀÚ¸¦ ±¸ºĞÇÑ´Ù.
++
++employees Å×ÀÌºíÀÇ ¸ğµç µ¥ÀÌÅÍ¸¦ Á¶È¸...
++select *from emplyees;
++
++--±ÇÀåÇÏ´Â ÀÛ¼º¹æ½Ä:Àıº°·Î ¿À¸¥ÂÊÀ¸·Î ¸ÂÃß´ø°¡ ¿ŞÂÊÀ¸·Î ¸ÂÃá´Ù
++select *
++  from employees;
++  
++select *
++from   employees;
++
++--µÑÁß¿¡ ÇÏ³ª·Î ¶óÀÎ ¸ÂÃç¾ßÇÑ´Ù.
++
++--µ¥ÀÌÅÍ°ªÀº ´ë¼Ò¹®ÀÚ ºñ±³¸¦ÇÑ´Ù.
++--µ¥ÀÌÅÍÀÇ °ªÀº ´ë¼Ò¹®ÀÚ ºñ±³µÈ´Ù.
++SELECT * 
++from employees
++where employee_id=110;
++
++SELECT *
++from employees
++where first_name='John'; 
++
++--Å×ÀÌºíÀÇ ¸ğµç ÄÃ·³À» Á¶È¸ÇÏÀÚ
++select ÄÃ·³¸í
++  from Å×ÀÌºí¸í;
++   
++select *
++  from employees; 
++  
++--Æ¯Á¤ ÄÃ·³¸¸ Á¶È¸ÇÏ±â
++select ÄÃ·³¸í[, ...]
++  from Å×ÀÌºí¸í
++  
++--»ç¿ø Å×ÀÌºíÀÇ Á¤º¸Áß¿¡¼­ »ç¿øÀÇ ÀÌ¸§(last_name),±Ş¿©,ÀÌ¸ŞÀÏÀ» Ãâ·Â
++select last_name,salary,email
++  from employees;
++  
++--ºÎ¼­ Å×ÀÌºí¿¡¼­ ºÎ¼­¹øÈ£¿Í ºÎ¼­¸íÀ» Ãâ·Â
++select department_id,department_name
++  from departments;
++  
++--ÄÃ·³ÀÇ »ê¼ú¿¬»êÀÌ °¡´ÉÇÏ´Ù.
++--¼ıÀÚÅ¸ÀÔÀÇ ÄÃ¸§Àº +,=,*,/ µîÀÌ °¡´ÉÇÔ.
++  
++--»ç¿øÀÇ ¿¬ºÀÀ» °è»êÇÕ´Ï´Ù.
++--¿¬ºÀ:±Ş¿©*15
++  
++select last_name,salary *15
++  from employees;
++  
++--Ãâ·ÂµÇ´Â ÄÃ·³ÀÇ Çìµå¸¦ º¯°æÇÏ±â(º°Äª:alias)(ex:À§ÀÇ salary*15°¡ ÀÌ·¸°Ô ½áÀÖÀ¸¸é ¿¬ºÀÀÎÁö ±¸º°ÇÏ±â ¾î·Æ´Ù->º°ÄªÀ» ³Ö¾îÁÖÀÚ)
++--º°Äª ¼³Á¤ ¹æ½Ä
++--¹æ¹ı 2°¡Áö:ÄÃ·³ º°Äª,ÄÃ·³ as º°Äª
++--»ç¿øÀÇ ÀÌ¸§°ú ¿¬ºÀÀ» Ãâ·ÂÇÕ´Ï´Ù.(¿¬ºÀ:±Ş¿©*15)
++--´Ü,Ãâ·Â½Ã ÄÃ·³ÀÇ Çìµå¸¦ "ÀÌ¸§"°ú "¿¬ºÀ"À¸·Î Ãâ·Â
++
++  select last_name ÀÌ¸§,salary*15 as ¿¬ºÀ 
++    from employees;
++    
++--µ¥ÀÌÅÍÀÇ °á°ú¸¦ Á¶ÇÕÇÏÀÚ:ÇÕ¼º ¿¬»êÀÚ(||),ÀÚ¹ÙÀÇ ¹®ÀÚ¿­ °áÇÕ,ÄÃ·³°ú º¯¼ö¸í
++select last_name||salary*15
++  from employees;
++  
++select employee_id||'¹ø »ç¿øÀÇ ÀÌ¸§Àº '||last_name as ÀÌ¸§||'ÀÌ°í ±Ş¿©´Â'||salary as ±Ş¿©||'¿ø ÀÔ´Ï´Ù.'
++  from employee;
++  
++===========================================
++WHERE Àı 
++ÀüÃ¼ µ¥ÀÌÅÍÀÇ ¹üÀ§¸¦ ÁÙ¿©ÁÖ´Â ¿ªÇÒÀ» ¼öÇàÇÑ´Ù.
++ÀüÃ¼ µ¥ÀÌÅÍ°¡ ¾Æ´Ñ Æ¯º°ÇÑ µ¥ÀÌÅÍ¸¸À» Á¶È¸ÇÑ´Ù.
++===========================================
++select last_name,salary,email
++  from emplyees
++ where salary>=10000;
++ 
++ select last_name,salary,email
++  from employees
++ where last_name='King';
++ 
++ select last_name,salary,email
++   from employess
++  where deparment_id!=100;
++  
++  select last_name,salary,email
++   from employees
++  where department_id=100 
++    and salary>=10000;
++    
++    select last_name,salary,email
++   from employees
++  where department_id=100 
++     or department_id=110;
++ 
++--SQL ¿¬»êÀÚ:
++-- ÄÃ·³¸í BETWEEN A AND B:A¿Í B»çÀÌÀÇ °ªÀ» ¼±ÅÃ(A,B Æ÷ÇÔ),AÀÇ °ªÀÌ Bº¸´Ù ÀÛ¾Æ¾ßÇÑ´Ù.
++-- ÄÃ·³ IN(°ª, ...):ÄÃ·³ÀÇ °ªÀÌ °ıÈ£¾ÈÀÇ °ª°ú ÀÏÄ¡ÇÏ´ÂÁö Ã¼Å©ÇÏ°í °°Àº °ªÀÌ ÀÖÀ¸¸é ÂüÀÌ µÈ´Ù.(°ıÈ£°¡ ²À µé¾î°¡¾ßÇÔ)
++-- ÄÃ·³ LIKE 'Æ÷¸ä ¹®ÀÚ¿­':ÄÃ·³ÀÇ °ªÀÌ Æ¯Á¤ÇÑ Æ÷¸ËÇüÅÂÀÎÁö Ã¼Å©
++-- ÄÃ·³ IS NULL:ÄÃ·³ÀÇ °ªÀÌ NULLÀÎÁö ÆÇ´ÜÇÑ´Ù.
++
++--»ç¿øÀÇ ±Ş¿©°¡ 10000ÀÌ»óÀÌ°í 15000ÀÌÇÏÀÎ »ç¿øÀÇ Á¤º¸¸¦ Ãâ·Â
++ select *
++   from employees
++  where salary>=10000 
++    and salary<=15000;
++
++ select *
++   from employees
++  where salary between 10000 and 15000;
++  
++--»ç¿øÀÇ ºÎ¼­°¡ 90,100,110,120 ¿¡ ¼ÓÇØ ÀÖ´Â »ç¿øÀÇ Á¤º¸ Ãâ·Â
++  select *
++    from employees
++   where department_id in (90,100,110,120);
++   
++--LIKE: ÆĞÅÏ¹®ÀÚ- %(0°³ ÀÌ»óÀÇ ¹®ÀÚ)<ÆÛ¼¾Æ®>¿Í _(ÇÑ¹®ÀÚ)(¾ğ´õ¹Ù)
++
++--»ç¿øÀÇ ÀÌ¸§ÀÌ 'L'·Î ½ÃÀÛÇÏ´Â »ç¿øÀÇ Á¤º¸¸¦ Ãâ·Â
++   
++select *
++  from employees
++ where last_name like 'L%';
++ where last_name like 'L%_';-->µÚ¿¡ ÇÑ±ÛÀÚ°¡ ¹«Á¶°Ç ¿Í¾ßÇÔ.
++ 
++ --»ç¿øÀÇ ÀÌ¸ŞÀÏÀÌ 5ÀÚÀÎ »ç¿øÀÇ Á¤º¸¸¦ Ãâ·Â
++ select *
++   from employees
++  where email like '_____';
++  
++  --»ç¿øÀÇ ÀÌ¸§ÀÇ µÎ¹øÂ° ±ÛÀÚ°¡ 'h'ÀÎ »ç¿øÀÇ Á¤º¸¸¦ Ãâ·Â
++  select *
++    from employees
++   where first_name like '_%h';
++   
++  --»ç¿øÀÇ ÀÌ¸ŞÀÏÀÇ Ã¹±ÛÀÚ°¡ 'D'ÀÌ°í ¸¶Áö¸· ±ÛÀÚ°¡ 'T'ÀÎ »ç¿øÀÇ Á¤º¸¸¦ Ãâ·Â
++  select *
++    from employees
++   where email like 'D%T'
++   
++  --ÀÌ¸§ÀÌ kingÀÎ »ç¿øÀÇ Á¤º¸¸¦ ÇÊ¿äÇÒ ¶§ like 'king' ÇØµµ Ãâ·ÂµÇ´Âµ¥ ÀÌ°ÍÀº Áö¾ç,like´Â ÆĞÅÏ¹®ÀÚ Äõ¸®ÇÒ ¶§ »ç¿ëÇØ¶ó
++  select *
++    from employees
++   where last_name='King';
++   
++  -- NULL ÀÌ¶õ? °ªÀÌ Á¤ÇØÁöÁö ¾ÊÀº »óÅÂ,¹ÌÁ¤ÀÇ °ª
++  -- NULL°úÀÇ »ê¼ú¿¬»êÀÇ °á°ú´Â NULL ÀÌ´Ù.
++   ??+100 ->??
++  --NULL°úÀÇ ºñ±³¿¬»ê  °á°ú´Â falseÀÌ´Ù.
++   ??>100-> true or false ->false
++   
++  --»ç¿øÁß¿¡¼­ Ä¿¹Ì¼ÇÀ» ¹ŞÁö ¾Ê´Â »ç¿øÀÇ Á¤º¸¸¦ Ãâ·Â
++  select *
++    from employees
++   where commission_pct is null;
++   
++   select last_name,commission_pct
++     from employees
++    where commission_pct is not null;
++    
++    
++=====================================================================
++ORDER BY
++Á¤·Ä¿¡ »ç¿ëµÊ...
++select ÀıÀÇ ½ÇÇà ¼ø¼­¿¡¼­ °¡Àå ¸¶Áö¸·¿¡ ½ÇÇàµÊ..
++¿À¸§Â÷¼ø(ASC) Á¤·Ä-µğÆúÆ®, ³»¸²Â÷¼ø(DESC) Á¤·Ä
++
++order by ÄÃ·³| Ç¥Çö½Ä[ASC|DESC], ......
++
++order by salary     ->±Ş¿©°¡ ÀûÀº »ç¶÷ºÎÅÍ Ãâ·Â -->default °ªÀº ¿À¸§Â÷¼ø
++order by salary asc ->±Ş¿©°¡ ÀûÀº »ç¶÷ºÎÅÍ Ãâ·Â
++order by salary*1000 desc->±Ş¿©°¡ ¸¹Àº »ç¶÷ºÎÅÍ Ãâ·Â-->¿Í °°ÀÌ Ç¥Çö½ÄÀÌ µé¾î°¥ ¼öµµ ÀÖ´Ù.
++=====================================================================
++
++--±Ş¿©°¡ ¸¹Àº »ç¿øºÎÅÍ È­¸é¿¡ Ãâ·Â
++select *
++  from employees
++order by salary desc;
++
++--ÃÖ±Ù ÀÔ»çÇÑ »ç¶÷ºÎÅÍ È­¸é¿¡ Ãâ·Â
++select *
++  from employees
++order by hire_date desc;
++
++--ºÎ¼­¹øÈ£ ¼øÀ¸·Î Ãâ·Â,¸¸¾à ºÎ¼­¹øÈ£°¡ °°Àº »ç¿øÀÌ ÀÖ´Ù¸é ±Ş¿©¼øÀ¸·Î Ãâ·ÂÇÑ´Ù.
++select department_id,salary,last_name
++  from employees 
++order by department_id;,salary asc,Last_Name desc;
++
++--»ç¿øÀÇ ¿¬ºÀ¼øÀ¸·Î Á¤·ÄÇÏ½Ã¿À
++--¿¬ºÀ:salary*15 
++select last_name,salary*15 as year_sal
++  from employees
++ order year_sal
++ 
++ --where ÀıÀÌ ½ÇÇàÀÌ ¾ÈµÇ´Â ÀÌÀ¯¿¡ ´ëÇØ
++ select last_name,salary*15 as year_sal
++  from employees
++  where year_sal>10000
++ order year_sal
++ --°¢ ¹®ÀåµéÀÇ ½ÇÇà ¼ø¼­¿¡ ´ëÇØ »ı°¢ÇØº¸¶ó
++ 
++ --ÄÃ·³¿¡¼­ Áßº¹°ªÀ» ¹èÁ¦ÇÑ ÈÄ¿¡ Ãâ·Â
++ select distinct department_id
++ from employees;
++ 
++ --¼¿·ºÀÇ distinct¿¡¼­ ÄÃ·³ÀÌ 2°³³ª¿À¸é 2°³¸¦ °¢°¢ÀÇ °ªÀ¸·Î ÇÏ¿© Áßº¹°ªÀ» ¹èÁ¦½ÃÅ²´Ù.
++  select distinct department_id,last_name
++ from employees;
++ 
++ ==================================================
++ GROUP BY
++ --µ¥ÀÌÅÍµéÀ» ¼Ò±×·ìÀ¸·Î ¹­´Â´Ù.
++ --±×·ì ÇÔ¼ö
++ --:¿©·¯°³ÀÇ µ¥ÀÌÅÍ¸¦ ¹Ş¾Æ¼­ ÇÏ³ªÀÇ °á°ú¸¦ ¹İÈ¯
++ --:COUNT(¹ŞÀº µ¥ÀÌÅÍÀÇ °³¼ö ¹İÈ¯),SUM(¹ŞÀº µ¥ÀÌÅÍÀÇ ÃÑÇÕ),MAX(¹ŞÀº µ¥ÀÌÅÍÁß¿¡ ÃÖ´ë°ª),MIN(¹ŞÀº µ¥ÀÌÅÍÁß¿¡ ÃÖ¼Ò°ª),AVG(¹ŞÀºµ¥ÀÌÅÍ°ªÀÇ Æò±Õ)...
++ ==================================================
++ 
++ select count(*)
++ from employees;
++ -- ->»ç¿ø Å×ÀÌºíÀÇ ÃÑ ¼ö¸¦ ¾Ë·Á´Ş¶ó.(ÃÑ »ç¿ø¼ö)
++ 
++ -- ÃÑ »ç¿ø¼ö,±Ş¿©ÀÇ ÃÑÇÕ,ÃÖ´ë ±Ş¿©,ÃÖ¼Ò±Ş¿©,Æò±Õ±Ş¿©
++ select count(*),SUM(salary),MAX(salary),MIN(salary),AVG(salary)
++   from employees;
++   
++ --100¹ø ºÎ¼­ÀÇ »ç¿ø¼ö,±Ş¿©ÀÇ ÃÑÇÕ,ÃÖ´ë±Ş¿©,ÃÖ¼Ò±Ş¿©,Æò±Õ±Ş¿©
++  select  count(*),SUM(salary),MAX(salary),MIN(salary),AVG(salary)
++  from employees
++  where department_id=100;
++  
++  --100¹ø ºÎ¼­ÀÇ »ç¿ø¼ö,±Ş¿©ÀÇ ÃÑÇÕ,ÃÖ´ë ±Ş¿©,ÃÖ¼Ò ±Ş¿©,Æò±Õ ±Ş¿©
++  
++  select  department_id,count(*),SUM(salary),MAX(salary),MIN(salary),AVG(salary)
++  from employees
++  group by department_id;
++  
++  create table tb_group(
++  id varchar2(3),
++  sal number,
++  job_id varchar2(2),
++  dept_id number
++  );
++  
++  create table tb_group(
++  id varchar2(3),
++  sal number,
++  job_id varchar2(2),
++  dept_id number
++  );
++  
++  
++  create table tb_group(
++  id varchar2(3),
++  sal number,
++  job_id varchar2(2),
++  dept_id number
++  );	
++  insert into tb_group values('a',1000,'SA',10);
++  insert into tb_group values('b',2000,'CM',30);
++  insert into tb_group values('c',3000,'CM',20);
++  insert into tb_group values('d',4000,'EA',20);
++  insert into tb_group values('e',5000,'WA',30);
++  insert into tb_group values('f',6000,'CM',10);
++  
++  commit;
++  
++  select *
++  from tb_group
++  group by dept_id;
++  
++  --±×·ìÇÎÀÇ ÀÌÇØ
++  select dept_id,count(job_id),sum(sal),max(sal)
++  from tb_group2
++  group by dept_id;
++  
++  
++  select job_id,dept_id,count(job_id),sum(sal),max(sal)
++  from tb_group2
++  group by job_id,dept_id;
++  
++  --°¢ ºÎ¼­º° ÃÖ´ë ±Ş¿©¸¦ Ãâ·ÂÇÕ´Ï´Ù
++  --´Ü,ÃÖ´ë ±Ş¿©°¡ ³ôÀº ºÎ¼­ºÎÅÍ Ãâ·Â
++  
++select department_id,max(salary) max_sal
++    from employees
++group by department_id
++order by max_sal desc;
++
++  --°¢ ºÎ¼­º° ÃÖ´ë ±Ş¿©¸¦ Ãâ·ÂÇÕ´Ï´Ù
++  --ÃÖ´ë ±Ş¿©°¡ 10000 ÀÌ»óÀÎ ºÎ¼­¸¦ ´ë»óÀ¸·Î ÇÕ´Ï´Ù.
++  --´Ü,ÃÖ´ë ±Ş¿©°¡ ³ôÀº ºÎ¼­ºÎÅÍ Ãâ·Â
++
++select department_id,max(salary)
++    from employees
++    group by department_id
++    having max(salary)>=10000
++    order by max(salary) desc;
++    
++    --±×·ìÀº Á¦¾àÁ¶°ÇÀ» whereÀÌ ¾Æ´Ñ havingÀ¸·Î Áà¾ßÇÑ´Ù.
++    
++    
++  --°¢ ºÎ¼­º° ÃÖ´ë ±Ş¿©¸¦ Ãâ·ÂÇÕ´Ï´Ù
++  --´Ü 100¹øº¸´Ù Å« ºÎ¼­´Â Á¦¿ÜÇÏ°í
++  --ÃÖ´ë ±Ş¿©°¡ 10000 ÀÌ»óÀÎ ºÎ¼­¸¦ ´ë»óÀ¸·Î ÇÕ´Ï´Ù.
++  --´Ü,ÃÖ´ë ±Ş¿©°¡ ³ôÀº ºÎ¼­ºÎÅÍ Ãâ·Â
++    
++select department_id,max(salary)
++from employees
++where department_id <=100
++group by department_id
++having max(salary)>=10000
++order by max(salary) desc
++
++  --where ´Â °³º° ÄÃ·³ÀÇ Á¦¾àÁ¶°ÇÀ» ¸í½Ã havingÀº ±×·ì ÄÃ·³ÀÇ Á¶°ÇÀ» ¸í½ÃÇÑ´Ù.
+\ No newline at end of file
+-- 
+2.15.0.windows.1
+
